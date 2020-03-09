@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsUI.Views.Rentals;
 
 namespace WindowsUI.Views.Clients
 {
@@ -42,8 +43,8 @@ namespace WindowsUI.Views.Clients
                     return;
                 }
 
-                var activeRentals = rentalResponse.Data?.Where(x => x.DateOfRental.GetValueOrDefault() == null);
-                var inActiveRentals = rentalResponse.Data?.Where(x => x.DateOfRental.GetValueOrDefault() != null);
+                var activeRentals = rentalResponse.Data?.Where(x => !x.DateOfReturn.HasValue);
+                var inActiveRentals = rentalResponse.Data?.Where(x => x.DateOfReturn.HasValue);
                 FillGrid(dgridCurrent, activeRentals);
                 FillGrid(dgridHistory, inActiveRentals);
             }
@@ -56,10 +57,27 @@ namespace WindowsUI.Views.Clients
                 dgrid.Rows.Add(1);
                 dgrid.Rows[dgrid.Rows.Count - 1].Cells[0].Value = rental.Copy?.Movie?.Title;
                 dgrid.Rows[dgrid.Rows.Count - 1].Cells[1].Value = rental.Copy?.Id;
-                dgrid.Rows[dgrid.Rows.Count - 1].Cells[2].Value = rental.DateOfRental.GetValueOrDefault().Date.ToShortDateString();
-                dgrid.Rows[dgrid.Rows.Count - 1].Cells[3].Value = rental.DateOfReturn.GetValueOrDefault().Date.ToShortDateString();
+                dgrid.Rows[dgrid.Rows.Count - 1].Cells[2].Value = rental.DateOfRental?.Date.ToShortDateString();
+                dgrid.Rows[dgrid.Rows.Count - 1].Cells[3].Value = rental.DateOfReturn?.Date.ToShortDateString();
             }
 
+        }
+
+        private void btnRentalAdd_Click(object sender, EventArgs e)
+        {
+            if (_client != null)
+            {
+                var frmAddnewRental = new AddRental(_rentalsLogic, _client.Id, true);
+                frmAddnewRental.ShowDialog();
+                FillForm();
+            }
+        }
+
+        private void btnReturn_Click(object sender, EventArgs e)
+        {
+            var frmAddnewRental = new AddRental(_rentalsLogic, _client.Id, false);
+            frmAddnewRental.ShowDialog();
+            FillForm();
         }
     }
 }

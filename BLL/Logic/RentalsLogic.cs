@@ -21,11 +21,11 @@ namespace BLL.Logic
             _copiesLogic = copiesLogic;
         }
 
-        public ObjectResponse<bool> AddRental(int clientId, int copyId, DateTime dateOfReturn)
+        public ObjectResponse<bool> AddRental(int clientId, int copyId)
         {
             try
             {
-                var copy = _copiesLogic.GetCopy(x => x.copy_id == copyId && x.available == true);
+                var copy = _copiesLogic.GetCopy(x => x.copy_id == copyId && x.available.Value == true);
                 if (!copy.Success)
                 {
                     return new ObjectResponse<bool> { Success = false, Error = "Copy Does not Exist In Shop" };
@@ -35,8 +35,7 @@ namespace BLL.Logic
                 {
                     client_id = clientId,
                     copy_id = copyId,
-                    date_of_rental = DateTime.Now,
-                    date_of_return = dateOfReturn
+                    date_of_rental = DateTime.Now
                 };
 
                 _unitOfWork.RentalsRepository.Add(rental);
@@ -97,6 +96,7 @@ namespace BLL.Logic
                 var rental = _unitOfWork.RentalsRepository.GetFirstWhere(x => x.copy_id == response.Data.Id && x.client_id == clientId);
                 if (rental != null)
                 {
+                    rental.date_of_return = DateTime.Now;
                     var result = _copiesLogic.AddOrUpdate(response.Data.Id, response.Data.Movie.Id, true);
 
                     return result.Success ? new ObjectResponse<bool> { Success = true, Data = true } :

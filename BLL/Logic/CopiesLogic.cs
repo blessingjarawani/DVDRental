@@ -32,7 +32,7 @@ namespace BLL.Logic
                 var response = _unitOfWork.CopiesRepository.GetFirstWhere(x => x.copy_id == copyId);
                 response = InitialiseCopy(copyId, movieId, available, response);
 
-                return _unitOfWork.DbContext.SaveChanges() > 0 ?
+                return _unitOfWork.SaveChanges() > 0 ?
                     new ObjectResponse<bool> { Success = true, Data = true } : new ObjectResponse<bool> { Success = false, Error = DB_SAVE_ERROR };
             }
             catch (Exception ex)

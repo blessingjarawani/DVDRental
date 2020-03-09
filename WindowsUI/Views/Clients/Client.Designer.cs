@@ -32,27 +32,28 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.btnRentalAdd = new System.Windows.Forms.Button();
-            this.dgridHistory = new System.Windows.Forms.DataGridView();
             this.dgridCurrent = new System.Windows.Forms.DataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateofRental = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.dgridHistory = new System.Windows.Forms.DataGridView();
             this.MovieName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Copy = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HistDateofRental = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DateofReturn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnRentalAdd = new System.Windows.Forms.Button();
+            this.btnReturn = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgridHistory)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgridCurrent)).BeginInit();
+            this.tabPage2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgridHistory)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -101,53 +102,6 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Current";
             this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.dgridHistory);
-            this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(756, 346);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "History";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnRentalAdd);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(770, 30);
-            this.panel1.TabIndex = 1;
-            // 
-            // btnRentalAdd
-            // 
-            this.btnRentalAdd.Location = new System.Drawing.Point(3, 2);
-            this.btnRentalAdd.Name = "btnRentalAdd";
-            this.btnRentalAdd.Size = new System.Drawing.Size(108, 28);
-            this.btnRentalAdd.TabIndex = 2;
-            this.btnRentalAdd.Text = "Add Rental";
-            this.btnRentalAdd.UseVisualStyleBackColor = true;
-            // 
-            // dgridHistory
-            // 
-            this.dgridHistory.AllowUserToAddRows = false;
-            this.dgridHistory.AllowUserToDeleteRows = false;
-            this.dgridHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgridHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.MovieName,
-            this.Copy,
-            this.HistDateofRental,
-            this.DateofReturn});
-            this.dgridHistory.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgridHistory.Location = new System.Drawing.Point(3, 3);
-            this.dgridHistory.Name = "dgridHistory";
-            this.dgridHistory.ReadOnly = true;
-            this.dgridHistory.RowHeadersWidth = 51;
-            this.dgridHistory.Size = new System.Drawing.Size(750, 340);
-            this.dgridHistory.TabIndex = 1;
             // 
             // dgridCurrent
             // 
@@ -202,6 +156,35 @@
             this.dataGridViewTextBoxColumn3.ReadOnly = true;
             this.dataGridViewTextBoxColumn3.Width = 122;
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dgridHistory);
+            this.tabPage2.Location = new System.Drawing.Point(4, 25);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(756, 346);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "History";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // dgridHistory
+            // 
+            this.dgridHistory.AllowUserToAddRows = false;
+            this.dgridHistory.AllowUserToDeleteRows = false;
+            this.dgridHistory.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgridHistory.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.MovieName,
+            this.Copy,
+            this.HistDateofRental,
+            this.DateofReturn});
+            this.dgridHistory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgridHistory.Location = new System.Drawing.Point(3, 3);
+            this.dgridHistory.Name = "dgridHistory";
+            this.dgridHistory.ReadOnly = true;
+            this.dgridHistory.RowHeadersWidth = 51;
+            this.dgridHistory.Size = new System.Drawing.Size(750, 340);
+            this.dgridHistory.TabIndex = 1;
+            // 
             // MovieName
             // 
             this.MovieName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
@@ -237,6 +220,36 @@
             this.DateofReturn.ReadOnly = true;
             this.DateofReturn.Width = 122;
             // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.btnReturn);
+            this.panel1.Controls.Add(this.btnRentalAdd);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(770, 30);
+            this.panel1.TabIndex = 1;
+            // 
+            // btnRentalAdd
+            // 
+            this.btnRentalAdd.Location = new System.Drawing.Point(3, 2);
+            this.btnRentalAdd.Name = "btnRentalAdd";
+            this.btnRentalAdd.Size = new System.Drawing.Size(108, 28);
+            this.btnRentalAdd.TabIndex = 2;
+            this.btnRentalAdd.Text = "Add Rental";
+            this.btnRentalAdd.UseVisualStyleBackColor = true;
+            this.btnRentalAdd.Click += new System.EventHandler(this.btnRentalAdd_Click);
+            // 
+            // btnReturn
+            // 
+            this.btnReturn.Location = new System.Drawing.Point(117, 0);
+            this.btnReturn.Name = "btnReturn";
+            this.btnReturn.Size = new System.Drawing.Size(108, 28);
+            this.btnReturn.TabIndex = 3;
+            this.btnReturn.Text = "Return Copy";
+            this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
+            // 
             // Client
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -255,10 +268,10 @@
             this.groupBox1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgridHistory)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgridCurrent)).EndInit();
+            this.tabPage2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgridHistory)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -282,5 +295,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Copy;
         private System.Windows.Forms.DataGridViewTextBoxColumn HistDateofRental;
         private System.Windows.Forms.DataGridViewTextBoxColumn DateofReturn;
+        private System.Windows.Forms.Button btnReturn;
     }
 }

@@ -23,7 +23,7 @@ namespace BLL.Models.DTO
                 Id = actor.actor_id,
                 FirstName = actor.first_name,
                 LastName = actor.last_name,
-                Birthday = actor.birthday.Value.DateTime,
+                Birthday = actor.birthday?.DateTime,
                 Movies = actor.movies?.Select(x => MovieDTO.Create(x)).ToList()
             };
 

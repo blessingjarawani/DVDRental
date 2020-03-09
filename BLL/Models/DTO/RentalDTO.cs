@@ -18,13 +18,13 @@ namespace BLL.Models.DTO
         {
             return new RentalDTO
             {
-                DateOfRental = rental.date_of_rental.Value.DateTime,
-                DateOfReturn = rental.date_of_return.Value.DateTime,
+                DateOfRental = rental.date_of_rental?.Date,
+                DateOfReturn = rental.date_of_return?.Date,
                 Copy = CopyDTO.Create(rental?.copy),
                 Client = new ClientDTO
                 {
                     Id = rental.client.client_id,
-                    Birthday = rental.client.birthday.Value.DateTime,
+                    Birthday = rental.client.birthday?.Date,
                     LastName = rental.client.last_name,
                     FirstName = rental.client.first_name
                 }

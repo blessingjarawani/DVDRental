@@ -26,11 +26,11 @@ namespace BLL.Models.DTO
                 Id = movie.movie_id,
                 Title = movie.title,
                 Year = movie.year,
-                AgeRestriction = movie.age_restriction.Value,
+                AgeRestriction = movie.age_restriction,
                 Price = movie.price.Value,
                 Actors = movie?.actors?.Select(x => new ActorDTO
                 {
-                    Birthday = x.birthday.Value.DateTime,
+                    Birthday = x.birthday?.DateTime,
                     FirstName = x.first_name,
                     LastName = x.last_name,
                     Id = x.actor_id

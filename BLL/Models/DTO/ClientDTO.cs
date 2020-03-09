@@ -20,7 +20,7 @@ namespace BLL.Models.DTO
                 Id = client.client_id,
                 FirstName = client.first_name,
                 LastName = client.last_name,
-                Birthday = client.birthday.Value.DateTime
+                Birthday = client.birthday?.DateTime
             };
         }
     }

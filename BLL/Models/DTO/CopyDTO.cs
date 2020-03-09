@@ -17,7 +17,7 @@ namespace BLL.Models.DTO
             return new CopyDTO
             {
                 Id = copy.copy_id,
-                Available = copy.available.Value,
+                Available = copy.available,
                 Movie = new MovieDTO
                 {
                     Id = copy.movy.movie_id,
