@@ -42,7 +42,7 @@ namespace WindowsUI.Views.Movies
                 dgrid.Rows[dgrid.Rows.Count - 1].Cells[3].Value = movie.Price;
                 dgrid.Rows[dgrid.Rows.Count - 1].Cells[4].Value = movie.Copies.Count(x => x.Available == true);
                 dgrid.Rows[dgrid.Rows.Count - 1].Cells[5].Value = movie.Copies.Count(x => x.Available == false);
-
+                dgrid.Rows[dgrid.Rows.Count - 1].Cells[6].Value = "...";
             }
         }
     }

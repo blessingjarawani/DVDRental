@@ -102,6 +102,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Movies\AddMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Movies\AddMovie.Designer.cs">
+      <DependentUpon>AddMovie.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Movies\MoviesListing.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -133,6 +139,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Views\Movies\AddMovie.resx">
+      <DependentUpon>AddMovie.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Movies\MoviesListing.resx">
       <DependentUpon>MoviesListing.cs</DependentUpon>
     </EmbeddedResource>
