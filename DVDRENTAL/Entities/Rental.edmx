@@ -1,0 +1,391 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RentalModel.Store" Provider="Npgsql" ProviderManifestToken="9.6.1" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="actors">
+          <Key>
+            <PropertyRef Name="actor_id" />
+          </Key>
+          <Property Name="actor_id" Type="int4" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="8000" />
+          <Property Name="last_name" Type="varchar" MaxLength="8000" />
+          <Property Name="birthday" Type="timestamptz" Precision="7" />
+        </EntityType>
+        <EntityType Name="clients">
+          <Key>
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="client_id" Type="int4" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="8000" />
+          <Property Name="last_name" Type="varchar" MaxLength="8000" />
+          <Property Name="birthday" Type="timestamptz" Precision="7" />
+        </EntityType>
+        <EntityType Name="copies">
+          <Key>
+            <PropertyRef Name="copy_id" />
+          </Key>
+          <Property Name="copy_id" Type="int4" Nullable="false" />
+          <Property Name="available" Type="bool" />
+          <Property Name="movie_id" Type="int4" />
+        </EntityType>
+        <EntityType Name="employees">
+          <Key>
+            <PropertyRef Name="employee_id" />
+          </Key>
+          <Property Name="employee_id" Type="int4" Nullable="false" />
+          <Property Name="first_name" Type="varchar" MaxLength="8000" />
+          <Property Name="last_name" Type="varchar" MaxLength="8000" />
+          <Property Name="city" Type="varchar" MaxLength="8000" />
+          <Property Name="salary" Type="float4" />
+        </EntityType>
+        <EntityType Name="movies">
+          <Key>
+            <PropertyRef Name="movie_id" />
+          </Key>
+          <Property Name="title" Type="varchar" MaxLength="8000" Nullable="false" />
+          <Property Name="year" Type="int4" Nullable="false" />
+          <Property Name="age_restriction" Type="int4" />
+          <Property Name="movie_id" Type="int4" Nullable="false" />
+          <Property Name="price" Type="float4" />
+        </EntityType>
+        <EntityType Name="rentals">
+          <Key>
+            <PropertyRef Name="copy_id" />
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="copy_id" Type="int4" Nullable="false" />
+          <Property Name="client_id" Type="int4" Nullable="false" />
+          <Property Name="date_of_rental" Type="timestamptz" Precision="7" />
+          <Property Name="date_of_return" Type="timestamptz" Precision="7" />
+        </EntityType>
+        <EntityType Name="starring">
+          <Key>
+            <PropertyRef Name="actor_id" />
+            <PropertyRef Name="movie_id" />
+          </Key>
+          <Property Name="actor_id" Type="int4" Nullable="false" />
+          <Property Name="movie_id" Type="int4" Nullable="false" />
+        </EntityType>
+        <Association Name="copies_movie_id_fkey">
+          <End Role="movies" Type="Self.movies" Multiplicity="0..1" />
+          <End Role="copies" Type="Self.copies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movies">
+              <PropertyRef Name="movie_id" />
+            </Principal>
+            <Dependent Role="copies">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rentals_client_id_fkey">
+          <End Role="clients" Type="Self.clients" Multiplicity="1" />
+          <End Role="rentals" Type="Self.rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="rentals">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rentals_copy_id_fkey">
+          <End Role="copies" Type="Self.copies" Multiplicity="1" />
+          <End Role="rentals" Type="Self.rentals" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="copies">
+              <PropertyRef Name="copy_id" />
+            </Principal>
+            <Dependent Role="rentals">
+              <PropertyRef Name="copy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="starring_actor_id_fkey">
+          <End Role="actors" Type="Self.actors" Multiplicity="1" />
+          <End Role="starring" Type="Self.starring" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="actors">
+              <PropertyRef Name="actor_id" />
+            </Principal>
+            <Dependent Role="starring">
+              <PropertyRef Name="actor_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="starring_movie_id_fkey">
+          <End Role="movies" Type="Self.movies" Multiplicity="1" />
+          <End Role="starring" Type="Self.starring" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movies">
+              <PropertyRef Name="movie_id" />
+            </Principal>
+            <Dependent Role="starring">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RentalModelStoreContainer">
+          <EntitySet Name="actors" EntityType="Self.actors" Schema="public" store:Type="Tables" />
+          <EntitySet Name="clients" EntityType="Self.clients" Schema="public" store:Type="Tables" />
+          <EntitySet Name="copies" EntityType="Self.copies" Schema="public" store:Type="Tables" />
+          <EntitySet Name="employees" EntityType="Self.employees" Schema="public" store:Type="Tables" />
+          <EntitySet Name="movies" EntityType="Self.movies" Schema="public" store:Type="Tables" />
+          <EntitySet Name="rentals" EntityType="Self.rentals" Schema="public" store:Type="Tables" />
+          <EntitySet Name="starring" EntityType="Self.starring" Schema="public" store:Type="Tables" />
+          <AssociationSet Name="copies_movie_id_fkey" Association="Self.copies_movie_id_fkey">
+            <End Role="movies" EntitySet="movies" />
+            <End Role="copies" EntitySet="copies" />
+          </AssociationSet>
+          <AssociationSet Name="rentals_client_id_fkey" Association="Self.rentals_client_id_fkey">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="rentals" EntitySet="rentals" />
+          </AssociationSet>
+          <AssociationSet Name="rentals_copy_id_fkey" Association="Self.rentals_copy_id_fkey">
+            <End Role="copies" EntitySet="copies" />
+            <End Role="rentals" EntitySet="rentals" />
+          </AssociationSet>
+          <AssociationSet Name="starring_actor_id_fkey" Association="Self.starring_actor_id_fkey">
+            <End Role="actors" EntitySet="actors" />
+            <End Role="starring" EntitySet="starring" />
+          </AssociationSet>
+          <AssociationSet Name="starring_movie_id_fkey" Association="Self.starring_movie_id_fkey">
+            <End Role="movies" EntitySet="movies" />
+            <End Role="starring" EntitySet="starring" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RentalModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="actor">
+          <Key>
+            <PropertyRef Name="actor_id" />
+          </Key>
+          <Property Name="actor_id" Type="Int32" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="birthday" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="movies" Relationship="Self.starring" FromRole="actors" ToRole="movies" />
+        </EntityType>
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="birthday" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="rentals" Relationship="Self.rentals_client_id_fkey" FromRole="clients" ToRole="rentals" />
+        </EntityType>
+        <EntityType Name="copy">
+          <Key>
+            <PropertyRef Name="copy_id" />
+          </Key>
+          <Property Name="copy_id" Type="Int32" Nullable="false" />
+          <Property Name="available" Type="Boolean" />
+          <Property Name="movie_id" Type="Int32" />
+          <NavigationProperty Name="movy" Relationship="Self.copies_movie_id_fkey" FromRole="copies" ToRole="movies" />
+          <NavigationProperty Name="rentals" Relationship="Self.rentals_copy_id_fkey" FromRole="copies" ToRole="rentals" />
+        </EntityType>
+        <EntityType Name="employee">
+          <Key>
+            <PropertyRef Name="employee_id" />
+          </Key>
+          <Property Name="employee_id" Type="Int32" Nullable="false" />
+          <Property Name="first_name" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="last_name" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="city" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" />
+          <Property Name="salary" Type="Single" />
+        </EntityType>
+        <EntityType Name="movy">
+          <Key>
+            <PropertyRef Name="movie_id" />
+          </Key>
+          <Property Name="title" Type="String" MaxLength="8000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="year" Type="Int32" Nullable="false" />
+          <Property Name="age_restriction" Type="Int32" />
+          <Property Name="movie_id" Type="Int32" Nullable="false" />
+          <Property Name="price" Type="Single" />
+          <NavigationProperty Name="copies" Relationship="Self.copies_movie_id_fkey" FromRole="movies" ToRole="copies" />
+          <NavigationProperty Name="actors" Relationship="Self.starring" FromRole="movies" ToRole="actors" />
+        </EntityType>
+        <EntityType Name="rental">
+          <Key>
+            <PropertyRef Name="copy_id" />
+            <PropertyRef Name="client_id" />
+          </Key>
+          <Property Name="copy_id" Type="Int32" Nullable="false" />
+          <Property Name="client_id" Type="Int32" Nullable="false" />
+          <Property Name="date_of_rental" Type="DateTimeOffset" Precision="7" />
+          <Property Name="date_of_return" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="client" Relationship="Self.rentals_client_id_fkey" FromRole="rentals" ToRole="clients" />
+          <NavigationProperty Name="copy" Relationship="Self.rentals_copy_id_fkey" FromRole="rentals" ToRole="copies" />
+        </EntityType>
+        <Association Name="rentals_client_id_fkey">
+          <End Role="clients" Type="Self.client" Multiplicity="1" />
+          <End Role="rentals" Type="Self.rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="client_id" />
+            </Principal>
+            <Dependent Role="rentals">
+              <PropertyRef Name="client_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="copies_movie_id_fkey">
+          <End Role="movies" Type="Self.movy" Multiplicity="0..1" />
+          <End Role="copies" Type="Self.copy" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="movies">
+              <PropertyRef Name="movie_id" />
+            </Principal>
+            <Dependent Role="copies">
+              <PropertyRef Name="movie_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="rentals_copy_id_fkey">
+          <End Role="copies" Type="Self.copy" Multiplicity="1" />
+          <End Role="rentals" Type="Self.rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="copies">
+              <PropertyRef Name="copy_id" />
+            </Principal>
+            <Dependent Role="rentals">
+              <PropertyRef Name="copy_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="starring">
+          <End Role="actors" Type="Self.actor" Multiplicity="*" />
+          <End Role="movies" Type="Self.movy" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="rentalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="actors" EntityType="Self.actor" />
+          <EntitySet Name="clients" EntityType="Self.client" />
+          <EntitySet Name="copies" EntityType="Self.copy" />
+          <EntitySet Name="employees" EntityType="Self.employee" />
+          <EntitySet Name="movies" EntityType="Self.movy" />
+          <EntitySet Name="rentals" EntityType="Self.rental" />
+          <AssociationSet Name="rentals_client_id_fkey" Association="Self.rentals_client_id_fkey">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="rentals" EntitySet="rentals" />
+          </AssociationSet>
+          <AssociationSet Name="copies_movie_id_fkey" Association="Self.copies_movie_id_fkey">
+            <End Role="movies" EntitySet="movies" />
+            <End Role="copies" EntitySet="copies" />
+          </AssociationSet>
+          <AssociationSet Name="rentals_copy_id_fkey" Association="Self.rentals_copy_id_fkey">
+            <End Role="copies" EntitySet="copies" />
+            <End Role="rentals" EntitySet="rentals" />
+          </AssociationSet>
+          <AssociationSet Name="starring" Association="Self.starring">
+            <End Role="actors" EntitySet="actors" />
+            <End Role="movies" EntitySet="movies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RentalModelStoreContainer" CdmEntityContainer="rentalEntities">
+          <EntitySetMapping Name="actors">
+            <EntityTypeMapping TypeName="RentalModel.actor">
+              <MappingFragment StoreEntitySet="actors">
+                <ScalarProperty Name="actor_id" ColumnName="actor_id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="clients">
+            <EntityTypeMapping TypeName="RentalModel.client">
+              <MappingFragment StoreEntitySet="clients">
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="birthday" ColumnName="birthday" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="copies">
+            <EntityTypeMapping TypeName="RentalModel.copy">
+              <MappingFragment StoreEntitySet="copies">
+                <ScalarProperty Name="copy_id" ColumnName="copy_id" />
+                <ScalarProperty Name="available" ColumnName="available" />
+                <ScalarProperty Name="movie_id" ColumnName="movie_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="employees">
+            <EntityTypeMapping TypeName="RentalModel.employee">
+              <MappingFragment StoreEntitySet="employees">
+                <ScalarProperty Name="employee_id" ColumnName="employee_id" />
+                <ScalarProperty Name="first_name" ColumnName="first_name" />
+                <ScalarProperty Name="last_name" ColumnName="last_name" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="salary" ColumnName="salary" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="movies">
+            <EntityTypeMapping TypeName="RentalModel.movy">
+              <MappingFragment StoreEntitySet="movies">
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="year" ColumnName="year" />
+                <ScalarProperty Name="age_restriction" ColumnName="age_restriction" />
+                <ScalarProperty Name="movie_id" ColumnName="movie_id" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="rentals">
+            <EntityTypeMapping TypeName="RentalModel.rental">
+              <MappingFragment StoreEntitySet="rentals">
+                <ScalarProperty Name="copy_id" ColumnName="copy_id" />
+                <ScalarProperty Name="client_id" ColumnName="client_id" />
+                <ScalarProperty Name="date_of_rental" ColumnName="date_of_rental" />
+                <ScalarProperty Name="date_of_return" ColumnName="date_of_return" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="starring" TypeName="RentalModel.starring" StoreEntitySet="starring">
+            <EndProperty Name="actors">
+              <ScalarProperty Name="actor_id" ColumnName="actor_id" />
+            </EndProperty>
+            <EndProperty Name="movies">
+              <ScalarProperty Name="movie_id" ColumnName="movie_id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
