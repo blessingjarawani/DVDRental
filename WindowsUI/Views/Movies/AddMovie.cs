@@ -39,21 +39,13 @@ namespace WindowsUI.Views.Movies
 
         private bool Validate(string title, float price, int year)
         {
-            if (string.IsNullOrWhiteSpace(title))
+            var isValid = (!string.IsNullOrWhiteSpace(title) && price > 0 && year > 0);
+            if (isValid)
             {
-                return false;
-            }
-            if (price <= 0)
-            {
-                return false;
+                return true;
             }
 
-            if (year <= 0)
-            {
-                return false;
-            }
-
-            return true;
+            return false;
         }
 
         private void FillForm()
@@ -116,7 +108,6 @@ namespace WindowsUI.Views.Movies
                 dgrid.Rows.Add(1);
                 dgrid.Rows[dgrid.Rows.Count - 1].Cells[0].Value = copy.Id;
                 dgrid.Rows[dgrid.Rows.Count - 1].Cells[1].Value = copy.Available;
-
 
             }
         }
