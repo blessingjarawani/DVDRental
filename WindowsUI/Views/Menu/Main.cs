@@ -18,11 +18,13 @@ namespace WindowsUI
         private readonly IMoviesLogic _moviesLogic;
         private readonly IClientsLogic _clientsLogic;
         private readonly IRentalsLogic _rentalsLogic;
-        public Main(IMoviesLogic moviesLogic, IClientsLogic clientsLogic, IRentalsLogic rentalsLogic)
+        private readonly IActorsLogic _actorsLogic;
+        public Main(IMoviesLogic moviesLogic, IClientsLogic clientsLogic, IRentalsLogic rentalsLogic, IActorsLogic actorsLogic)
         {
             this._moviesLogic = moviesLogic;
             this._clientsLogic = clientsLogic;
             this._rentalsLogic = rentalsLogic;
+            this._actorsLogic = actorsLogic;
           InitializeComponent();
         }
 
@@ -33,7 +35,7 @@ namespace WindowsUI
 
         private void mnuMoviesDirectory_Click(object sender, EventArgs e)
         {
-            var frmMoviesList = new MoviesListing(_moviesLogic);
+            var frmMoviesList = new MoviesListing(_moviesLogic, _actorsLogic);
             frmMoviesList.Show();
 
         }

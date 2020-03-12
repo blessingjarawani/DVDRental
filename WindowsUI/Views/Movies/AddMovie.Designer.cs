@@ -29,31 +29,46 @@
         private void InitializeComponent()
         {
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtTitle = new System.Windows.Forms.TextBox();
-            this.nmYear = new System.Windows.Forms.NumericUpDown();
-            this.nmAgeRestriction = new System.Windows.Forms.NumericUpDown();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.txtId = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbnAssign = new System.Windows.Forms.Button();
             this.txtPrice = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.nmAgeRestriction = new System.Windows.Forms.NumericUpDown();
+            this.nmYear = new System.Windows.Forms.NumericUpDown();
+            this.txtTitle = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.dgrid = new System.Windows.Forms.DataGridView();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.CopyId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Available = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.button2 = new System.Windows.Forms.Button();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.dgridActors = new System.Windows.Forms.DataGridView();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.dgridMovieActors = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmYear)).BeginInit();
+            this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nmAgeRestriction)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmYear)).BeginInit();
+            this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgridActors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgridMovieActors)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -65,26 +80,14 @@
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 31.4121F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 68.5879F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(503, 347);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60.47794F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 39.52206F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(796, 544);
             this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.dgrid);
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 111);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(497, 233);
-            this.panel1.TabIndex = 0;
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.button2);
-            this.panel2.Controls.Add(this.button1);
-            this.panel2.Controls.Add(this.btnSave);
+            this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Controls.Add(this.txtPrice);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.txtId);
@@ -97,17 +100,100 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(497, 102);
+            this.panel2.Size = new System.Drawing.Size(790, 322);
             this.panel2.TabIndex = 1;
             // 
-            // label1
+            // groupBox1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Title";
+            this.groupBox1.Controls.Add(this.dgridMovieActors);
+            this.groupBox1.Controls.Add(this.btnRemove);
+            this.groupBox1.Controls.Add(this.dgridActors);
+            this.groupBox1.Controls.Add(this.tbnAssign);
+            this.groupBox1.Location = new System.Drawing.Point(8, 65);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(766, 239);
+            this.groupBox1.TabIndex = 9;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Actors";
+            // 
+            // tbnAssign
+            // 
+            this.tbnAssign.Location = new System.Drawing.Point(362, 57);
+            this.tbnAssign.Name = "tbnAssign";
+            this.tbnAssign.Size = new System.Drawing.Size(61, 27);
+            this.tbnAssign.TabIndex = 11;
+            this.tbnAssign.Text = ">>";
+            this.tbnAssign.UseVisualStyleBackColor = true;
+            // 
+            // txtPrice
+            // 
+            this.txtPrice.Location = new System.Drawing.Point(468, 32);
+            this.txtPrice.Name = "txtPrice";
+            this.txtPrice.Size = new System.Drawing.Size(118, 22);
+            this.txtPrice.TabIndex = 8;
+            this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(400, 34);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(40, 17);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Price";
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(747, 6);
+            this.txtId.Name = "txtId";
+            this.txtId.ReadOnly = true;
+            this.txtId.Size = new System.Drawing.Size(27, 22);
+            this.txtId.TabIndex = 6;
+            // 
+            // nmAgeRestriction
+            // 
+            this.nmAgeRestriction.Location = new System.Drawing.Point(509, 4);
+            this.nmAgeRestriction.Name = "nmAgeRestriction";
+            this.nmAgeRestriction.Size = new System.Drawing.Size(77, 22);
+            this.nmAgeRestriction.TabIndex = 5;
+            // 
+            // nmYear
+            // 
+            this.nmYear.Location = new System.Drawing.Point(49, 34);
+            this.nmYear.Maximum = new decimal(new int[] {
+            2060,
+            0,
+            0,
+            0});
+            this.nmYear.Minimum = new decimal(new int[] {
+            1060,
+            0,
+            0,
+            0});
+            this.nmYear.Name = "nmYear";
+            this.nmYear.Size = new System.Drawing.Size(123, 22);
+            this.nmYear.TabIndex = 4;
+            this.nmYear.Value = new decimal(new int[] {
+            1060,
+            0,
+            0,
+            0});
+            // 
+            // txtTitle
+            // 
+            this.txtTitle.Location = new System.Drawing.Point(49, 9);
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(315, 22);
+            this.txtTitle.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(399, 8);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 17);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Age Restriction";
             // 
             // label2
             // 
@@ -118,86 +204,24 @@
             this.label2.TabIndex = 1;
             this.label2.Text = "Year";
             // 
-            // label3
+            // label1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(251, 9);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 17);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Age Restriction";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(35, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Title";
             // 
-            // txtTitle
+            // panel1
             // 
-            this.txtTitle.Location = new System.Drawing.Point(49, 9);
-            this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(180, 22);
-            this.txtTitle.TabIndex = 3;
-            // 
-            // nmYear
-            // 
-            this.nmYear.Location = new System.Drawing.Point(49, 34);
-            this.nmYear.Maximum = new decimal(new int[] {
-            2005,
-            0,
-            0,
-            0});
-            this.nmYear.Minimum = new decimal(new int[] {
-            2005,
-            0,
-            0,
-            0});
-            this.nmYear.Name = "nmYear";
-            this.nmYear.Size = new System.Drawing.Size(123, 22);
-            this.nmYear.TabIndex = 4;
-            this.nmYear.Value = new decimal(new int[] {
-            2005,
-            0,
-            0,
-            0});
-            // 
-            // nmAgeRestriction
-            // 
-            this.nmAgeRestriction.Location = new System.Drawing.Point(361, 7);
-            this.nmAgeRestriction.Name = "nmAgeRestriction";
-            this.nmAgeRestriction.Size = new System.Drawing.Size(77, 22);
-            this.nmAgeRestriction.TabIndex = 5;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(497, 233);
-            this.dataGridView1.TabIndex = 0;
-            // 
-            // txtId
-            // 
-            this.txtId.Location = new System.Drawing.Point(467, 6);
-            this.txtId.Name = "txtId";
-            this.txtId.ReadOnly = true;
-            this.txtId.Size = new System.Drawing.Size(27, 22);
-            this.txtId.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(252, 35);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(40, 17);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Price";
-            // 
-            // txtPrice
-            // 
-            this.txtPrice.Location = new System.Drawing.Point(320, 33);
-            this.txtPrice.Name = "txtPrice";
-            this.txtPrice.Size = new System.Drawing.Size(118, 22);
-            this.txtPrice.TabIndex = 8;
-            this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.panel1.Controls.Add(this.dgrid);
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 331);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(790, 210);
+            this.panel1.TabIndex = 0;
             // 
             // dgrid
             // 
@@ -213,26 +237,8 @@
             this.dgrid.ReadOnly = true;
             this.dgrid.RowHeadersWidth = 51;
             this.dgrid.RowTemplate.Height = 24;
-            this.dgrid.Size = new System.Drawing.Size(497, 233);
+            this.dgrid.Size = new System.Drawing.Size(790, 210);
             this.dgrid.TabIndex = 1;
-            // 
-            // btnSave
-            // 
-            this.btnSave.Location = new System.Drawing.Point(419, 61);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(75, 27);
-            this.btnSave.TabIndex = 9;
-            this.btnSave.Text = "Save";
-            this.btnSave.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(320, 61);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 27);
-            this.button1.TabIndex = 10;
-            this.button1.Text = "Add Copies";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // CopyId
             // 
@@ -251,21 +257,149 @@
             this.Available.ReadOnly = true;
             this.Available.Width = 71;
             // 
-            // button2
+            // dataGridView1
             // 
-            this.button2.Location = new System.Drawing.Point(195, 61);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(119, 27);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "Assign Actors";
-            this.button2.UseVisualStyleBackColor = true;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(790, 210);
+            this.dataGridView1.TabIndex = 0;
+            // 
+            // btnSave
+            // 
+            this.btnSave.Location = new System.Drawing.Point(730, 562);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 27);
+            this.btnSave.TabIndex = 9;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(631, 562);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(93, 27);
+            this.button1.TabIndex = 10;
+            this.button1.Text = "Add Copies";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // dgridActors
+            // 
+            this.dgridActors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgridActors.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.LastName,
+            this.FirstName,
+            this.Sel});
+            this.dgridActors.Location = new System.Drawing.Point(6, 21);
+            this.dgridActors.Name = "dgridActors";
+            this.dgridActors.RowHeadersWidth = 51;
+            this.dgridActors.RowTemplate.Height = 24;
+            this.dgridActors.Size = new System.Drawing.Size(350, 212);
+            this.dgridActors.TabIndex = 12;
+            this.dgridActors.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(363, 90);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(61, 27);
+            this.btnRemove.TabIndex = 14;
+            this.btnRemove.Text = "<<";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            // 
+            // dgridMovieActors
+            // 
+            this.dgridMovieActors.AllowUserToAddRows = false;
+            this.dgridMovieActors.AllowUserToDeleteRows = false;
+            this.dgridMovieActors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgridMovieActors.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.Select});
+            this.dgridMovieActors.Location = new System.Drawing.Point(430, 21);
+            this.dgridMovieActors.Name = "dgridMovieActors";
+            this.dgridMovieActors.RowHeadersWidth = 51;
+            this.dgridMovieActors.RowTemplate.Height = 24;
+            this.dgridMovieActors.Size = new System.Drawing.Size(330, 212);
+            this.dgridMovieActors.TabIndex = 15;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 50;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "LastName";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.HeaderText = "FirstName";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            // 
+            // Select
+            // 
+            this.Select.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Select.HeaderText = "Sel";
+            this.Select.MinimumWidth = 6;
+            this.Select.Name = "Select";
+            this.Select.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Select.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Select.Width = 57;
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.Visible = false;
+            this.ID.Width = 50;
+            // 
+            // LastName
+            // 
+            this.LastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LastName.HeaderText = "LastName";
+            this.LastName.MinimumWidth = 6;
+            this.LastName.Name = "LastName";
+            // 
+            // FirstName
+            // 
+            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FirstName.HeaderText = "FirstName";
+            this.FirstName.MinimumWidth = 6;
+            this.FirstName.Name = "FirstName";
+            // 
+            // Sel
+            // 
+            this.Sel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Sel.HeaderText = "Sel";
+            this.Sel.MinimumWidth = 6;
+            this.Sel.Name = "Sel";
+            this.Sel.Width = 34;
             // 
             // AddMovie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(527, 371);
+            this.ClientSize = new System.Drawing.Size(833, 592);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.btnSave);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -273,14 +407,18 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Movie";
+            this.Load += new System.EventHandler(this.AddMovie_Load);
             this.tableLayoutPanel1.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nmYear)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.nmAgeRestriction)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nmYear)).EndInit();
+            this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgrid)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgridActors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgridMovieActors)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -305,6 +443,18 @@
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DataGridViewTextBoxColumn CopyId;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Available;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Button tbnAssign;
+        private System.Windows.Forms.DataGridView dgridActors;
+        private System.Windows.Forms.Button btnRemove;
+        private System.Windows.Forms.DataGridView dgridMovieActors;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Select;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FirstName;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Sel;
     }
 }

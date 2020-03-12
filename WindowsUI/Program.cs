@@ -35,6 +35,7 @@ namespace WindowsUI
             container.Register<ICopiesLogic, CopiesLogic>(Lifestyle.Singleton);
             container.Register<IRentalsLogic, RentalsLogic>(Lifestyle.Singleton);
             container.Register<IClientsLogic, ClientsLogic>(Lifestyle.Singleton);
+            container.Register<IActorsLogic, ActorsLogic>(Lifestyle.Singleton);
             container.Register<Main>(Lifestyle.Singleton);
             container.Verify();
         }

@@ -21,7 +21,7 @@ namespace BLL.Logic
             _copiesLogic = copiesLogic;
         }
 
-        public ObjectResponse<bool> AddorUpdate(MovieDTO movieDTO)
+        public ObjectResponse<int> AddorUpdate(MovieDTO movieDTO)
         {
             try
             {
@@ -51,27 +51,27 @@ namespace BLL.Logic
                     return AddMovieCopy(movie);
 
                 }
-                return new ObjectResponse<bool> { Success = false, Error = "Invalid Supplied Parameters", Info = DB_SAVE_ERROR };
+                return new ObjectResponse<int> { Success = false, Error = "Invalid Supplied Parameters", Info = DB_SAVE_ERROR };
             }
             catch (Exception ex)
             {
-                return new ObjectResponse<bool> { Success = false, Error = ex.GetBaseException().Message, Info = DB_ERROR_INSERT };
+                return new ObjectResponse<int> { Success = false, Error = ex.GetBaseException().Message, Info = DB_ERROR_INSERT };
             }
         }
 
-        private ObjectResponse<bool> AddMovieCopy(movy movie)
+        private ObjectResponse<int> AddMovieCopy(movy movie)
         {
             var movieCopy = _copiesLogic.GetLastCopy();
             if (!movieCopy.Success)
             {
-                return new ObjectResponse<bool> { Success = false, Error = movieCopy.Error, Info = movieCopy.Info };
+                return new ObjectResponse<int> { Success = false, Error = movieCopy.Error, Info = movieCopy.Info };
             }
 
             var copyId = (movieCopy.Data?.Id + 1) ?? 1;
             var addCopyResult = _copiesLogic.AddOrUpdate(copyId, movie.movie_id, true);
 
-            return addCopyResult.Success ? new ObjectResponse<bool> { Success = true, Data = true } :
-                new ObjectResponse<bool> { Success = false, Error = addCopyResult.Error, Info = addCopyResult.Info };
+            return addCopyResult.Success ? new ObjectResponse<int> { Success = true, Data = copyId } :
+                new ObjectResponse<int> { Success = false, Error = addCopyResult.Error, Info = addCopyResult.Info };
         }
 
         public ObjectResponse<List<MovieDTO>> GetAll()

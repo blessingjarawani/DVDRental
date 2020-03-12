@@ -14,9 +14,12 @@ namespace WindowsUI.Views.Movies
     public partial class MoviesListing : Form
     {
         private readonly IMoviesLogic _moviesLogic;
-        public MoviesListing(IMoviesLogic moviesLogic)
+        private readonly IActorsLogic _actorsLogic;
+
+        public MoviesListing(IMoviesLogic moviesLogic, IActorsLogic actorsLogic)
         {
             this._moviesLogic = moviesLogic;
+            this._actorsLogic = actorsLogic;
             InitializeComponent();
             this.FillForm();
         }
@@ -31,7 +34,7 @@ namespace WindowsUI.Views.Movies
             var moviesResponse = _moviesLogic.GetAll();
             if (!moviesResponse.Success)
             {
-
+                return;
             }
             foreach (var movie in moviesResponse.Data)
             {
@@ -43,6 +46,25 @@ namespace WindowsUI.Views.Movies
                 dgrid.Rows[dgrid.Rows.Count - 1].Cells[4].Value = movie.Copies.Count(x => x.Available == true);
                 dgrid.Rows[dgrid.Rows.Count - 1].Cells[5].Value = movie.Copies.Count(x => x.Available == false);
                 dgrid.Rows[dgrid.Rows.Count - 1].Cells[6].Value = "...";
+            }
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            var frmMovie = new AddMovie(_moviesLogic, _actorsLogic);
+            frmMovie.ShowDialog();
+        }
+
+        private void dgrid_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 6)
+            {
+                if (!string.IsNullOrEmpty(dgrid.CurrentRow.Cells[0].Value?.ToString()))
+                {
+                    var movieId = int.Parse(dgrid.CurrentRow.Cells[0].Value.ToString());
+                    var frmMovie = new AddMovie(_moviesLogic,_actorsLogic, movieId);
+                    frmMovie.ShowDialog();
+                }
             }
         }
     }

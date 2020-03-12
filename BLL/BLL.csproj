@@ -52,12 +52,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Infrastructure\Shared\Abstracts\BaseLogic.cs" />
+    <Compile Include="Infrastructure\Shared\Interfaces\IActorsLogic.cs" />
     <Compile Include="Infrastructure\Shared\Interfaces\IClientsLogic.cs" />
     <Compile Include="Infrastructure\Shared\Interfaces\ICopiesLogic.cs" />
     <Compile Include="Infrastructure\Shared\Interfaces\IMoviesLogic.cs" />
     <Compile Include="Infrastructure\Shared\Interfaces\IRentalsLogic.cs" />
     <Compile Include="Infrastructure\Shared\Responses\BaseResponse.cs" />
     <Compile Include="Infrastructure\Shared\Responses\ObjectResponse.cs" />
+    <Compile Include="Logic\ActorsLogic.cs" />
     <Compile Include="Logic\ClientsLogic.cs" />
     <Compile Include="Logic\CopiesLogic.cs" />
     <Compile Include="Logic\MoviesLogic.cs" />

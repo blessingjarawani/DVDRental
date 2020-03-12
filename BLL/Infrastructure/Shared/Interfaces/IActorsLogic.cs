@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace BLL.Infrastructure.Shared.Interfaces
 {
-    public interface IMoviesLogic
+   public interface IActorsLogic
     {
-        ObjectResponse<List<MovieDTO>> GetAll();
-        ObjectResponse<MovieDTO> GetById(int id);
-        ObjectResponse<int> AddorUpdate(MovieDTO movieDTO);
+        ObjectResponse<List<ActorDTO>> GetAll();
+        ObjectResponse<bool> AddOrUpdate(ActorDTO actor);
+
     }
 }
