@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsUI.Views.Clients;
 using WindowsUI.Views.Movies;
+using WindowsUI.Views.Rentals;
 
 namespace WindowsUI
 {
@@ -44,6 +45,18 @@ namespace WindowsUI
         {
             var frmClientsListing = new ClientsListing(_clientsLogic,_rentalsLogic);
             frmClientsListing.Show();
+        }
+
+        private void mnuStats_Click(object sender, EventArgs e)
+        {
+            var frmRentalList = new RentalsList( _rentalsLogic);
+            frmRentalList.Show();
+        }
+
+        private void mnuOverDue_Click(object sender, EventArgs e)
+        {
+            var frmRentalOverDue = new RentalOverDue(_rentalsLogic);
+            frmRentalOverDue.Show();
         }
     }
 }

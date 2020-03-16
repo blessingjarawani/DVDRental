@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Infrastructure\Helpers\Mappers.cs" />
     <Compile Include="Infrastructure\Shared\Abstracts\BaseLogic.cs" />
     <Compile Include="Infrastructure\Shared\Interfaces\IActorsLogic.cs" />
     <Compile Include="Infrastructure\Shared\Interfaces\IClientsLogic.cs" />

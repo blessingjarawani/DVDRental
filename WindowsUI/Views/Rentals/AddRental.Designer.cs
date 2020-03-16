@@ -30,8 +30,8 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.txtRental = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -49,15 +49,7 @@
             this.txtRental.Name = "txtRental";
             this.txtRental.Size = new System.Drawing.Size(256, 22);
             this.txtRental.TabIndex = 1;
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Image = global::WindowsUI.Properties.Resources.icons8_search_24;
-            this.btnSearch.Location = new System.Drawing.Point(371, 19);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(52, 35);
-            this.btnSearch.TabIndex = 3;
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.txtRental.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtRental_KeyPress);
             // 
             // btnSave
             // 
@@ -68,6 +60,15 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Image = global::WindowsUI.Properties.Resources.icons8_search_24;
+            this.btnSearch.Location = new System.Drawing.Point(371, 19);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(52, 35);
+            this.btnSearch.TabIndex = 3;
+            this.btnSearch.UseVisualStyleBackColor = true;
             // 
             // AddRental
             // 

@@ -17,7 +17,7 @@ namespace BLL.Models.DTO
 
         public List<CopyDTO> Copies { get; private set; }
 
-        public List<ActorDTO> Actors { get; private set; }
+        public List<ActorDTO> Actors { get;  set; }
 
         public static MovieDTO Create(movy movie)
         {

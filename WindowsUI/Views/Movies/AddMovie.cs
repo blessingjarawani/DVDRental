@@ -17,6 +17,7 @@ namespace WindowsUI.Views.Movies
         private readonly IMoviesLogic _moviesLogic;
         private readonly IActorsLogic _actorsLogic;
         private readonly int _movieId;
+
         public AddMovie(IMoviesLogic moviesLogic, IActorsLogic actorsLogic, int movieId = 0)
         {
             _actorsLogic = actorsLogic;
@@ -37,6 +38,29 @@ namespace WindowsUI.Views.Movies
 
         }
 
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (Validate(txtTitle.Text, float.Parse(txtPrice.Text), int.Parse(nmYear.Value.ToString())))
+            {
+                var movie = new MovieDTO
+                {
+                    Id = int.Parse(txtId.Text.ToString()),
+                    Title = txtTitle.Text,
+                    Price = float.Parse(txtPrice.Text.ToString()),
+                    AgeRestriction = int.Parse(nmAgeRestriction.Value.ToString()),
+                    Year = int.Parse(nmYear.Value.ToString()),
+                    Actors = SetMovieActors()
+
+                };
+                var result = _moviesLogic.AddorUpdate(movie);
+                if (!result.Success)
+                {
+                    MessageBox.Show(result.Error);
+                    return;
+                }
+                txtId.Text = result.Data.ToString();
+            }
+        }
         private bool Validate(string title, float price, int year)
         {
             var isValid = (!string.IsNullOrWhiteSpace(title) && price > 0 && year > 0);
@@ -80,7 +104,7 @@ namespace WindowsUI.Views.Movies
 
         private void InitialiseControls()
         {
-            txtId.Clear();
+            txtId.Text = "0";
             txtPrice.Clear();
             txtPrice.Clear();
             dgridActors.Rows.Clear();
@@ -96,9 +120,24 @@ namespace WindowsUI.Views.Movies
                 dgridMovieActors.Rows[dgridMovieActors.Rows.Count - 1].Cells[0].Value = actor.Id;
                 dgridMovieActors.Rows[dgridMovieActors.Rows.Count - 1].Cells[1].Value = actor.LastName;
                 dgridMovieActors.Rows[dgridMovieActors.Rows.Count - 1].Cells[2].Value = actor.FirstName;
-                dgridMovieActors.Rows[dgridMovieActors.Rows.Count - 1].Cells[3].Value = true;
+                dgridMovieActors.Rows[dgridMovieActors.Rows.Count - 1].Cells[3].Value = false;
 
             }
+        }
+        private List<ActorDTO> SetMovieActors()
+        {
+            var actors = new List<ActorDTO>();
+            for (int i = 0; i < dgridMovieActors.Rows.Count; i++)
+            {
+                var actor = new ActorDTO
+                {
+                    Id = int.Parse(dgridMovieActors.Rows[i].Cells[0].Value.ToString()),
+                    LastName = dgridMovieActors.Rows[i].Cells[1].Value.ToString(),
+                    FirstName = dgridMovieActors.Rows[i].Cells[2].Value.ToString()
+                };
+                actors.Add(actor);
+            }
+            return actors;
         }
 
         private void FillCopies(List<CopyDTO> copies)
@@ -132,13 +171,69 @@ namespace WindowsUI.Views.Movies
             foreach (var actor in result)
             {
                 dgridActors.Rows.Add(1);
-                dgridActors.Rows[dgridActors.Rows.Count - 2].Cells[0].Value = actor.Id;
-                dgridActors.Rows[dgridActors.Rows.Count - 2].Cells[1].Value = actor.LastName;
-                dgridActors.Rows[dgridActors.Rows.Count - 2].Cells[2].Value = actor.FirstName;
-                dgridActors.Rows[dgridActors.Rows.Count - 2].Cells[3].Value = false;
+                dgridActors.Rows[dgridActors.Rows.Count - 1].Cells[0].Value = actor.Id;
+                dgridActors.Rows[dgridActors.Rows.Count - 1].Cells[1].Value = actor.LastName;
+                dgridActors.Rows[dgridActors.Rows.Count - 1].Cells[2].Value = actor.FirstName;
+                dgridActors.Rows[dgridActors.Rows.Count - 1].Cells[3].Value = false;
 
             }
         }
 
+
+        private void TransferData(DataGridView source, DataGridView destination)
+        {
+            List<DataGridViewRow> selectedRows = new List<DataGridViewRow>();
+            foreach (DataGridViewRow row in source.Rows)
+            {
+
+                var selected = Boolean.Parse(row.Cells[3].Value.ToString());
+                if (selected)
+                {
+                    destination.Rows.Add(1);
+                    destination.Rows[destination.Rows.Count - 1].Cells[0].Value = row.Cells[0].Value;
+                    destination.Rows[destination.Rows.Count - 1].Cells[1].Value = row.Cells[1].Value;
+                    destination.Rows[destination.Rows.Count - 1].Cells[2].Value = row.Cells[2].Value;
+                    destination.Rows[destination.Rows.Count - 1].Cells[3].Value = false;
+                    selectedRows.Add(row);
+                }
+
+            }
+            DeleteSourceRows(source, selectedRows);
+        }
+
+        private static void DeleteSourceRows(DataGridView source, List<DataGridViewRow> selectedRows)
+        {
+            if (selectedRows.Any())
+            {
+
+                foreach (var row in selectedRows)
+                {
+                    source.Rows.Remove(row);
+                }
+            }
+        }
+
+        private void tbnAssign_Click(object sender, EventArgs e)
+        {
+            TransferData(dgridActors, dgridMovieActors);
+        }
+
+        private void btnRemove_Click(object sender, EventArgs e)
+        {
+            TransferData(dgridMovieActors, dgridActors);
+        }
+
+        private void txtPrice_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+             (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

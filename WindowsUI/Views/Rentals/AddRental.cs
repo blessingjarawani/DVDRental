@@ -44,5 +44,19 @@ namespace WindowsUI.Views.Rentals
             var copyId = int.Parse(txtRental.Text.ToString());
             Save(copyId);
         }
+
+        private void txtRental_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+              (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

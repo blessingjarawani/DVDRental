@@ -30,10 +30,12 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.clientsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.moviesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.renatlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuMoviesDirectory = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuClientsDirectory = new System.Windows.Forms.ToolStripMenuItem();
+            this.moviesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuMoviesDirectory = new System.Windows.Forms.ToolStripMenuItem();
+            this.renatlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOverDue = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStats = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,6 +60,13 @@
             this.clientsToolStripMenuItem.Size = new System.Drawing.Size(67, 24);
             this.clientsToolStripMenuItem.Text = "Clients";
             // 
+            // mnuClientsDirectory
+            // 
+            this.mnuClientsDirectory.Name = "mnuClientsDirectory";
+            this.mnuClientsDirectory.Size = new System.Drawing.Size(201, 26);
+            this.mnuClientsDirectory.Text = "Clients Directory";
+            this.mnuClientsDirectory.Click += new System.EventHandler(this.mnuClientsDirectory_Click);
+            // 
             // moviesToolStripMenuItem
             // 
             this.moviesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -66,25 +75,35 @@
             this.moviesToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
             this.moviesToolStripMenuItem.Text = "Movies";
             // 
+            // mnuMoviesDirectory
+            // 
+            this.mnuMoviesDirectory.Name = "mnuMoviesDirectory";
+            this.mnuMoviesDirectory.Size = new System.Drawing.Size(204, 26);
+            this.mnuMoviesDirectory.Text = "Movies Directory";
+            this.mnuMoviesDirectory.Click += new System.EventHandler(this.mnuMoviesDirectory_Click);
+            // 
             // renatlsToolStripMenuItem
             // 
+            this.renatlsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuOverDue,
+            this.mnuStats});
             this.renatlsToolStripMenuItem.Name = "renatlsToolStripMenuItem";
             this.renatlsToolStripMenuItem.Size = new System.Drawing.Size(71, 24);
             this.renatlsToolStripMenuItem.Text = "Rentals";
             // 
-            // mnuMoviesDirectory
+            // mnuOverDue
             // 
-            this.mnuMoviesDirectory.Name = "mnuMoviesDirectory";
-            this.mnuMoviesDirectory.Size = new System.Drawing.Size(224, 26);
-            this.mnuMoviesDirectory.Text = "Movies Directory";
-            this.mnuMoviesDirectory.Click += new System.EventHandler(this.mnuMoviesDirectory_Click);
+            this.mnuOverDue.Name = "mnuOverDue";
+            this.mnuOverDue.Size = new System.Drawing.Size(224, 26);
+            this.mnuOverDue.Text = "OverDue";
+            this.mnuOverDue.Click += new System.EventHandler(this.mnuOverDue_Click);
             // 
-            // mnuClientsDirectory
+            // mnuStats
             // 
-            this.mnuClientsDirectory.Name = "mnuClientsDirectory";
-            this.mnuClientsDirectory.Size = new System.Drawing.Size(224, 26);
-            this.mnuClientsDirectory.Text = "Clients Directory";
-            this.mnuClientsDirectory.Click += new System.EventHandler(this.mnuClientsDirectory_Click);
+            this.mnuStats.Name = "mnuStats";
+            this.mnuStats.Size = new System.Drawing.Size(224, 26);
+            this.mnuStats.Text = "Statistics";
+            this.mnuStats.Click += new System.EventHandler(this.mnuStats_Click);
             // 
             // Main
             // 
@@ -116,6 +135,8 @@
         private System.Windows.Forms.ToolStripMenuItem clientsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mnuMoviesDirectory;
         private System.Windows.Forms.ToolStripMenuItem mnuClientsDirectory;
+        private System.Windows.Forms.ToolStripMenuItem mnuOverDue;
+        private System.Windows.Forms.ToolStripMenuItem mnuStats;
     }
 }
 

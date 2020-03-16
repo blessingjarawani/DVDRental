@@ -1,4 +1,5 @@
-﻿using BLL.Infrastructure.Shared.Abstracts;
+﻿using BLL.Infrastructure.Helpers;
+using BLL.Infrastructure.Shared.Abstracts;
 using BLL.Infrastructure.Shared.Interfaces;
 using BLL.Infrastructure.Shared.Responses;
 using BLL.Models.DTO;
@@ -33,6 +34,7 @@ namespace BLL.Logic
                         movie.price = movieDTO.Price;
                         movie.title = movieDTO.Title;
                         movie.year = movieDTO.Year;
+
                     }
                     else
                     {
@@ -43,19 +45,27 @@ namespace BLL.Logic
                             age_restriction = movieDTO.AgeRestriction,
                             title = movieDTO.Title,
                             price = movieDTO.Price,
-                            year = movieDTO.Year
+                            year = movieDTO.Year,
                         };
-                        _unitOfWork.MoviesRepository.Add(movie);
-                    }
 
-                    return AddMovieCopy(movie);
+                        _unitOfWork.MoviesRepository.Add(movie);
+                        return AddMovieCopy(movie);
+                    }
+                    return _unitOfWork.SaveChanges() > 0 ?
+                       new ObjectResponse<int> { Success = true, Data = movie.movie_id } : new ObjectResponse<int> { Success = false, Error = DB_SAVE_ERROR };
+
 
                 }
                 return new ObjectResponse<int> { Success = false, Error = "Invalid Supplied Parameters", Info = DB_SAVE_ERROR };
             }
             catch (Exception ex)
             {
-                return new ObjectResponse<int> { Success = false, Error = ex.GetBaseException().Message, Info = DB_ERROR_INSERT };
+                return new ObjectResponse<int>
+                {
+                    Success = false,
+                    Error = ex.GetBaseException().Message,
+                    Info = DB_ERROR_INSERT
+                };
             }
         }
 

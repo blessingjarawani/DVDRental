@@ -71,8 +71,14 @@ namespace BLL.Logic
 
                 if (rentalFilters.RentalDateTo.HasValue)
                 {
-                    var dateTo = rentalFilters.RentalDateFrom.Value.Date.AddDays(1);
+                    var dateTo = rentalFilters.RentalDateTo.Value.Date.AddDays(1);
                     response = response.Where(x => x.date_of_rental.Value.CompareTo(dateTo) < 0);
+                }
+
+                if (rentalFilters.DaysOverDue > 0)
+                {
+   
+                    response = response.Where(x => DbFunctions.DiffDays(x.date_of_rental.Value, DateTime.Now) >= rentalFilters.DaysOverDue && !x.date_of_return.HasValue);
                 }
 
                 return new ObjectResponse<List<RentalDTO>> { Success = true, Data = response.ToList()?.Select(x => RentalDTO.Create(x))?.ToList() };

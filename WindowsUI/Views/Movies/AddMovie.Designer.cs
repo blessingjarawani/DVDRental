@@ -31,6 +31,17 @@
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dgridMovieActors = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.btnRemove = new System.Windows.Forms.Button();
+            this.dgridActors = new System.Windows.Forms.DataGridView();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tbnAssign = new System.Windows.Forms.Button();
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -48,27 +59,16 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnSave = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.dgridActors = new System.Windows.Forms.DataGridView();
-            this.btnRemove = new System.Windows.Forms.Button();
-            this.dgridMovieActors = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Select = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgridMovieActors)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgridActors)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmAgeRestriction)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmYear)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgridActors)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgridMovieActors)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -116,6 +116,121 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Actors";
             // 
+            // dgridMovieActors
+            // 
+            this.dgridMovieActors.AllowUserToAddRows = false;
+            this.dgridMovieActors.AllowUserToDeleteRows = false;
+            this.dgridMovieActors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgridMovieActors.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.Select});
+            this.dgridMovieActors.Location = new System.Drawing.Point(430, 21);
+            this.dgridMovieActors.Name = "dgridMovieActors";
+            this.dgridMovieActors.RowHeadersWidth = 51;
+            this.dgridMovieActors.RowTemplate.Height = 24;
+            this.dgridMovieActors.Size = new System.Drawing.Size(330, 212);
+            this.dgridMovieActors.TabIndex = 15;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
+            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Visible = false;
+            this.dataGridViewTextBoxColumn1.Width = 125;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn2.HeaderText = "LastName";
+            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewTextBoxColumn3.HeaderText = "FirstName";
+            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            // 
+            // Select
+            // 
+            this.Select.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Select.HeaderText = "Sel";
+            this.Select.MinimumWidth = 6;
+            this.Select.Name = "Select";
+            this.Select.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Select.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Select.Width = 57;
+            // 
+            // btnRemove
+            // 
+            this.btnRemove.Location = new System.Drawing.Point(363, 90);
+            this.btnRemove.Name = "btnRemove";
+            this.btnRemove.Size = new System.Drawing.Size(61, 27);
+            this.btnRemove.TabIndex = 14;
+            this.btnRemove.Text = "<<";
+            this.btnRemove.UseVisualStyleBackColor = true;
+            this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
+            // 
+            // dgridActors
+            // 
+            this.dgridActors.AllowUserToAddRows = false;
+            this.dgridActors.AllowUserToDeleteRows = false;
+            this.dgridActors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgridActors.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ID,
+            this.LastName,
+            this.FirstName,
+            this.Sel});
+            this.dgridActors.Location = new System.Drawing.Point(6, 21);
+            this.dgridActors.Name = "dgridActors";
+            this.dgridActors.RowHeadersWidth = 51;
+            this.dgridActors.RowTemplate.Height = 24;
+            this.dgridActors.Size = new System.Drawing.Size(350, 212);
+            this.dgridActors.TabIndex = 12;
+            this.dgridActors.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // ID
+            // 
+            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.ID.HeaderText = "ID";
+            this.ID.MinimumWidth = 6;
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
+            this.ID.Visible = false;
+            this.ID.Width = 125;
+            // 
+            // LastName
+            // 
+            this.LastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.LastName.HeaderText = "LastName";
+            this.LastName.MinimumWidth = 6;
+            this.LastName.Name = "LastName";
+            this.LastName.ReadOnly = true;
+            // 
+            // FirstName
+            // 
+            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.FirstName.HeaderText = "FirstName";
+            this.FirstName.MinimumWidth = 6;
+            this.FirstName.Name = "FirstName";
+            this.FirstName.ReadOnly = true;
+            // 
+            // Sel
+            // 
+            this.Sel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Sel.HeaderText = "Sel";
+            this.Sel.MinimumWidth = 6;
+            this.Sel.Name = "Sel";
+            this.Sel.Width = 34;
+            // 
             // tbnAssign
             // 
             this.tbnAssign.Location = new System.Drawing.Point(362, 57);
@@ -124,6 +239,7 @@
             this.tbnAssign.TabIndex = 11;
             this.tbnAssign.Text = ">>";
             this.tbnAssign.UseVisualStyleBackColor = true;
+            this.tbnAssign.Click += new System.EventHandler(this.tbnAssign_Click);
             // 
             // txtPrice
             // 
@@ -132,6 +248,7 @@
             this.txtPrice.Size = new System.Drawing.Size(118, 22);
             this.txtPrice.TabIndex = 8;
             this.txtPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPrice.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrice_KeyPress);
             // 
             // label4
             // 
@@ -149,6 +266,7 @@
             this.txtId.ReadOnly = true;
             this.txtId.Size = new System.Drawing.Size(27, 22);
             this.txtId.TabIndex = 6;
+            this.txtId.Text = "0";
             // 
             // nmAgeRestriction
             // 
@@ -276,6 +394,7 @@
             this.btnSave.TabIndex = 9;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // button1
             // 
@@ -285,112 +404,6 @@
             this.button1.TabIndex = 10;
             this.button1.Text = "Add Copies";
             this.button1.UseVisualStyleBackColor = true;
-            // 
-            // dgridActors
-            // 
-            this.dgridActors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgridActors.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
-            this.LastName,
-            this.FirstName,
-            this.Sel});
-            this.dgridActors.Location = new System.Drawing.Point(6, 21);
-            this.dgridActors.Name = "dgridActors";
-            this.dgridActors.RowHeadersWidth = 51;
-            this.dgridActors.RowTemplate.Height = 24;
-            this.dgridActors.Size = new System.Drawing.Size(350, 212);
-            this.dgridActors.TabIndex = 12;
-            this.dgridActors.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
-            // 
-            // btnRemove
-            // 
-            this.btnRemove.Location = new System.Drawing.Point(363, 90);
-            this.btnRemove.Name = "btnRemove";
-            this.btnRemove.Size = new System.Drawing.Size(61, 27);
-            this.btnRemove.TabIndex = 14;
-            this.btnRemove.Text = "<<";
-            this.btnRemove.UseVisualStyleBackColor = true;
-            // 
-            // dgridMovieActors
-            // 
-            this.dgridMovieActors.AllowUserToAddRows = false;
-            this.dgridMovieActors.AllowUserToDeleteRows = false;
-            this.dgridMovieActors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgridMovieActors.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.Select});
-            this.dgridMovieActors.Location = new System.Drawing.Point(430, 21);
-            this.dgridMovieActors.Name = "dgridMovieActors";
-            this.dgridMovieActors.RowHeadersWidth = 51;
-            this.dgridMovieActors.RowTemplate.Height = 24;
-            this.dgridMovieActors.Size = new System.Drawing.Size(330, 212);
-            this.dgridMovieActors.TabIndex = 15;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.dataGridViewTextBoxColumn1.HeaderText = "ID";
-            this.dataGridViewTextBoxColumn1.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.Visible = false;
-            this.dataGridViewTextBoxColumn1.Width = 50;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn2.HeaderText = "LastName";
-            this.dataGridViewTextBoxColumn2.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridViewTextBoxColumn3.HeaderText = "FirstName";
-            this.dataGridViewTextBoxColumn3.MinimumWidth = 6;
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            // 
-            // Select
-            // 
-            this.Select.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Select.HeaderText = "Sel";
-            this.Select.MinimumWidth = 6;
-            this.Select.Name = "Select";
-            this.Select.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Select.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Select.Width = 57;
-            // 
-            // ID
-            // 
-            this.ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.ID.HeaderText = "ID";
-            this.ID.MinimumWidth = 6;
-            this.ID.Name = "ID";
-            this.ID.Visible = false;
-            this.ID.Width = 50;
-            // 
-            // LastName
-            // 
-            this.LastName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.LastName.HeaderText = "LastName";
-            this.LastName.MinimumWidth = 6;
-            this.LastName.Name = "LastName";
-            // 
-            // FirstName
-            // 
-            this.FirstName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.FirstName.HeaderText = "FirstName";
-            this.FirstName.MinimumWidth = 6;
-            this.FirstName.Name = "FirstName";
-            // 
-            // Sel
-            // 
-            this.Sel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Sel.HeaderText = "Sel";
-            this.Sel.MinimumWidth = 6;
-            this.Sel.Name = "Sel";
-            this.Sel.Width = 34;
             // 
             // AddMovie
             // 
@@ -412,13 +425,13 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgridMovieActors)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgridActors)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmAgeRestriction)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nmYear)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgrid)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgridActors)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgridMovieActors)).EndInit();
             this.ResumeLayout(false);
 
         }
