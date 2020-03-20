@@ -10,6 +10,8 @@ namespace BLL.Infrastructure.Shared.Interfaces
 {
     public interface IClientsLogic
     {
-        ObjectResponse<List<ClientDTO>> GetClients(string SearchText); 
+        ObjectResponse<List<ClientDTO>> GetClients(string SearchText);
+        ObjectResponse<int> AddOrUpdate(int clientId, string lastName, string firstName, DateTime dateOfBirth);
+        
     }
 }

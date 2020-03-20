@@ -40,6 +40,7 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearchText = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgrid)).BeginInit();
@@ -137,6 +138,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnAdd);
             this.panel1.Controls.Add(this.btnSearch);
             this.panel1.Controls.Add(this.txtSearchText);
             this.panel1.Controls.Add(this.label1);
@@ -171,6 +173,16 @@
             this.label1.Size = new System.Drawing.Size(53, 17);
             this.label1.TabIndex = 0;
             this.label1.Text = "Search";
+            // 
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(685, 4);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(82, 35);
+            this.btnAdd.TabIndex = 3;
+            this.btnAdd.Text = "Add New";
+            this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // ClientsListing
             // 
@@ -209,5 +221,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn LastName;
         private System.Windows.Forms.DataGridViewTextBoxColumn DOB;
         private System.Windows.Forms.DataGridViewButtonColumn Rentals;
+        private System.Windows.Forms.Button btnAdd;
     }
 }
